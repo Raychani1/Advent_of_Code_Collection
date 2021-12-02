@@ -8,7 +8,9 @@ class AOC2021D01:
     def __init__(self) -> None:
         """Initialize the AOC2021D01 Class."""
 
-        self.__puzzle = Puzzle(year=2021, day=1)
+        self.__year = 2021
+        self.__day = 1
+        self.__puzzle = Puzzle(year=self.__year, day=self.__day)
         self.__data = self.__read_puzzle_input(
             puzzle_input=self.__puzzle.input_data
         )
@@ -90,5 +92,15 @@ class AOC2021D01:
 
         """
 
-        submit(year=2021, day=1, part="a", answer=self.__solve_puzzle_1())
-        submit(year=2021, day=1, part="b", answer=self.__solve_puzzle_2())
+        submit(
+            year=self.__year,
+            day=self.__day,
+            part="a",
+            answer=self.__solve_puzzle_1()
+        )
+        submit(
+            year=self.__year,
+            day=self.__day,
+            part="b",
+            answer=self.__solve_puzzle_2()
+        )
