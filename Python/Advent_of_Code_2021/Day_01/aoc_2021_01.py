@@ -47,7 +47,7 @@ class AOC2021D01:
         return increased
 
     def __solve_puzzle_2(self) -> int:
-        """Solve the first part of the Puzzle.
+        """Solve the second part of the Puzzle.
 
         Returns:
             int: Number of sums of 3 that are larger than the previous sum of 3
