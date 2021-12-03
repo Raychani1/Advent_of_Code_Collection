@@ -1,3 +1,4 @@
+from typing import List
 from aocd import submit
 from termcolor import colored
 from aocd.models import Puzzle
@@ -8,26 +9,20 @@ class AOC2021D01:
     def __init__(self) -> None:
         """Initialize the AOC2021D01 Class."""
 
-        self.__year = 2021
-        self.__day = 1
-        self.__puzzle = Puzzle(year=self.__year, day=self.__day)
-        self.__data = self.__read_puzzle_input(
-            puzzle_input=self.__puzzle.input_data
-        )
+        self.__year: int = 2021
+        self.__day: int = 1
+        self.__puzzle: Puzzle = Puzzle(year=self.__year, day=self.__day)
+        self.__data: List[int] = self.__process_puzzle_input()
 
-    @staticmethod
-    def __read_puzzle_input(puzzle_input: str) -> list:
-        """Process puzzle input.
-
-        Args:
-            puzzle_input (str): Puzzle input string
+    def __process_puzzle_input(self) -> List[int]:
+        """Process Puzzle Input.
 
         Returns:
-            list: Processed puzzle input
+            List[int]: Processed Puzzle Input
 
         """
 
-        return list(map(int, puzzle_input.split('\n')))
+        return list(map(int, self.__puzzle.input_data.split('\n')))
 
     def __solve_puzzle_1(self) -> int:
         """Solve the first part of the Puzzle.
