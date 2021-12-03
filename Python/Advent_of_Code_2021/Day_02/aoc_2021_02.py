@@ -1,5 +1,6 @@
 from aocd import submit
 from termcolor import colored
+from typing import List, Union
 from aocd.models import Puzzle
 
 
@@ -8,26 +9,22 @@ class AOC2021D02:
     def __init__(self) -> None:
         """Initialize the AOC2021D02 Class."""
 
-        self.__year = 2021
-        self.__day = 2
-        self.__puzzle = Puzzle(year=self.__year, day=self.__day)
-        self.__data = self.__read_puzzle_input(
-            puzzle_input=self.__puzzle.input_data
-        )
+        self.__year: int = 2021
+        self.__day: int = 2
+        self.__puzzle: Puzzle = Puzzle(year=self.__year, day=self.__day)
+        self.__data: List[List[Union[str, int]]] = self.__process_puzzle_input()
 
-    @staticmethod
-    def __read_puzzle_input(puzzle_input: str) -> list:
-        """Process puzzle input.
-
-        Args:
-            puzzle_input (str): Puzzle input string
+    def __process_puzzle_input(self) -> List[List[Union[str, int]]]:
+        """Process Puzzle Input.
 
         Returns:
-            list: Processed puzzle input
+            List[List[Union[str, int]]]: Processed Puzzle Input
 
         """
 
-        input_list = [x.split() for x in puzzle_input.split('\n')]
+        input_list: List[List[str]] = [
+            x.split() for x in self.__puzzle.input_data.split('\n')
+        ]
 
         for element in input_list:
             element[1] = int(element[1])
@@ -43,7 +40,7 @@ class AOC2021D02:
         """
 
         # Position of the Submarine ( Horizontal Position and Depth )
-        position = [0, 0]
+        position: List[int] = [0, 0]
 
         for data in self.__data:
             if data[0] == 'down':
@@ -64,7 +61,7 @@ class AOC2021D02:
         """
 
         # Position of the Submarine ( Horizontal Position, Depth and Aim )
-        position = [0, 0, 0]
+        position: List[int] = [0, 0, 0]
 
         for data in self.__data:
             if data[0] == 'down':
