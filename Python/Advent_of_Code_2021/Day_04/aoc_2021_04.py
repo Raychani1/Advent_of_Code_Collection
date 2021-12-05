@@ -121,7 +121,7 @@ class AOC2021D04:
         return False, 0
 
     def __solve_puzzle(self, last_win: bool) -> int:
-        """Solve the first part of the Puzzle.
+        """Solve both parts of the Puzzle.
 
         Args:
             last_win (bool): Result selection
