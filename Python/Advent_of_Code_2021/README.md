@@ -7,4 +7,5 @@ Collection of programming puzzles from December 2021.
 [Day 3 - Binary Diagnostic](Day_03)\
 [Day 4 - Giant Squid](Day_04)\
 [Day 5 - Hydrothermal Venture](Day_05)\
-[Day 6 - Lanternfish](Day_06)
+[Day 6 - Lanternfish](Day_06)\
+[Day 7 - The Treachery of Whales](Day_07)
