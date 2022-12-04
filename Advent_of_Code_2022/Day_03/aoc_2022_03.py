@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Tuple, Union
+from typing import List
 
 from aocd.models import Puzzle
 from termcolor import colored
