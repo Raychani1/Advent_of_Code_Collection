@@ -1,6 +1,6 @@
 import re
 from itertools import chain
-from operator import methodcaller
+from operator import itemgetter, methodcaller
 from typing import Dict, List, Union
 
 from aocd.models import Puzzle
@@ -27,17 +27,8 @@ class AOC2022D05:
         cargo_warehouse: Dict[str, List[str]] = {}
 
         for line in self.__puzzle.input_data.split('\n\n')[0].split('\n')[:-1]:
-            # Replace Cargo Crates with quotation marks and find their content
             for i, cargo in enumerate(
-				re.findall(
-					r'"(.*?)"',
-					''.join(
-						[
-							'"' if i in range(0, len(line), 2)
-							else line[i] for i in range(len(line))
-						]
-					)
-				)
+                list(itemgetter(*range(1, len(line), 4))(line))
             ):
                 stack: str = str(i+1)
 
