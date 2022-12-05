@@ -1,5 +1,5 @@
-from typing import List
 from operator import methodcaller
+from typing import List
 
 from aocd.models import Puzzle
 from termcolor import colored
@@ -51,12 +51,7 @@ class AOC2022D04:
 		Returns:
 			bool: Overlap found.
 		"""
-		range1, range2 = tuple(
-			[
-				set(range(r[0], r[1]+1))
-				for r in sorted(range_data, key=lambda x: x[0])
-			]
-		)
+		range1, range2 = tuple([set(range(r[0], r[1]+1)) for r in range_data])
 
 		return (
 			len(set.intersection(range1, range2)) in [len(range1), len(range2)]
