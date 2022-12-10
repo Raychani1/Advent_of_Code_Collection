@@ -136,11 +136,11 @@ class AOC2022D07:
             )
         )
 
-    def solve_puzzle_2(self) -> str:
+    def solve_puzzle_2(self) -> int:
         """Solve the second part of the Puzzle.
 
         Returns:
-            int: The total sizes of selected directory.
+            int: The total size of selected directory.
         """
 
         return sorted(
@@ -162,7 +162,7 @@ class AOC2022D07:
 
         print(
             colored(
-                'The total sizes of selected directory is',
+                'The total size of selected directory is',
                 'green'
             ),
             self.solve_puzzle_2(),            
