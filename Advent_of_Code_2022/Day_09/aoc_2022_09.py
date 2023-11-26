@@ -167,12 +167,10 @@ class AOC2022D09:
             previous_x, previous_y = previous_knot_position
             current_x, current_y = current_knot_position
 
-            # Covered or in
             if self.__calculate_distance(
                 previous_knot_position, current_knot_position
             ) not in [0.0, 1.0, math.sqrt(2)]:
 
-                # Check if they are in different column
                 if (previous_x != current_x) and (previous_y != current_y):
                     new_position = self.__move_diagonally(
                         previous_x=previous_x,
