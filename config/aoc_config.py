@@ -10,18 +10,20 @@ from Advent_of_Code_2022.Day_07.aoc_2022_07 import AOC2022D07
 from Advent_of_Code_2022.Day_08.aoc_2022_08 import AOC2022D08
 from Advent_of_Code_2022.Day_09.aoc_2022_09 import AOC2022D09
 from Advent_of_Code_2022.Day_10.aoc_2022_10 import AOC2022D10
+from Advent_of_Code_2022.Day_11.aoc_2022_11 import AOC2022D11
 
 AOC_CONFIG: Dict[str, List[Any]] = {
     '2022': [
-        AOC2022D01(),
-        AOC2022D02(),
-        AOC2022D03(),
-        AOC2022D04(),
-        AOC2022D05(),
-        AOC2022D06(),
-        AOC2022D07(),
-        AOC2022D08(),
-        AOC2022D09(),
-        AOC2022D10(),
+        # AOC2022D01(),
+        # AOC2022D02(),
+        # AOC2022D03(),
+        # AOC2022D04(),
+        # AOC2022D05(),
+        # AOC2022D06(),
+        # AOC2022D07(),
+        # AOC2022D08(),
+        # AOC2022D09(),
+        # AOC2022D10(),
+        AOC2022D11(),
     ]
 }
