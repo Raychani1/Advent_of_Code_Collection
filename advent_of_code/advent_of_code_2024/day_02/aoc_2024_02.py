@@ -18,8 +18,7 @@ class AOC2024D02:
         """Processes Puzzle Input.
 
         Returns:
-            List[List[int]]: Processed Puzzle Input. Left and Right columns of
-                input.
+            List[List[int]]: Processed Puzzle Input.
         """
         return [
             [int(x) for x in lst]
