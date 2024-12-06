@@ -7,11 +7,12 @@ from termcolor import colored
 
 class AOC2024D05:
     def __init__(self) -> None:
-        """Initializes the AOC2024D04 Class."""
+        """Initializes the AOC2024D05 Class."""
         self.year: int = 2024
         self.day: int = 5
         self.__puzzle: Puzzle = Puzzle(year=self.year, day=self.day)
         self.__ordering_rules, self.__updates = self.__process_puzzle_input()
+        self.__valid_sum, self.__invalid_sum = self.__calculate_middle_sums()
 
     def __process_puzzle_input(
         self,
@@ -25,22 +26,20 @@ class AOC2024D05:
         split_data: List[str] = self.__puzzle.input_data.split('\n\n')
 
         ordering_rules = split_data[0].split('\n')
-        # ordering_rules: Dict[str, List[str]] = {}
-
-        # for ordering_rules_info in split_data[0].split('\n'):
-        #     split_info = ordering_rules_info.split('|')
-
-        #     if split_info[0] not in ordering_rules.keys():
-        #         ordering_rules[split_info[0]] = [split_info[1]]
-        #     else:
-        #         ordering_rules[split_info[0]].append(split_info[1])
 
         updates = list(map(lambda x: x.split(','), split_data[1].split('\n')))
 
         return ordering_rules, updates
 
     def __is_valid(self, values: List[str]) -> bool:
-        # TODO - Docstring
+        """Checks if all elements in `values` follow the ordering rules.
+
+        Args:
+            values (List[str]): Values to validate.
+
+        Returns:
+            bool: Result of validation.
+        """
         return all(
             list(
                 '|'.join(list(combination)) in self.__ordering_rules
@@ -48,19 +47,49 @@ class AOC2024D05:
             )
         )
 
+    def __sort_invalid_updates(self, update: List[str]) -> List[str]:
+        """Sorts invalid values based on available ordering rules.
+
+        Args:
+            update (List[str]): Invalid update to sort.
+
+        Returns:
+            List[str]: Sorted update.
+        """
+        while not self.__is_valid(values=update):
+            for i in range(len(update)):
+                for j in range(i + 1, len(update)):
+                    if f'{update[i]}|{update[j]}' not in self.__ordering_rules:
+                        update[i], update[j] = update[j], update[i]
+
+        return update
+
+    def __calculate_middle_sums(self) -> Tuple[int, int]:
+        """Calculates middle sums for valid and invalid updates.
+
+        Returns:
+            Tuple[int, int]: Valid and invalid update sums of middle numbers.
+        """
+        valid_sum: int = 0
+        invalid_sum: int = 0
+
+        for update in self.__updates:
+            if self.__is_valid(values=update):
+                valid_sum += int(update[len(update) // 2])
+            else:
+                update = self.__sort_invalid_updates(update=update)
+
+                invalid_sum += int(update[len(update) // 2])
+
+        return valid_sum, invalid_sum
+
     def solve_puzzle_1(self) -> int:
         """Solves the first part of the Puzzle.
 
         Returns:
             int: TODO
         """
-        middle_sum: int = 0
-
-        for update in self.__updates:
-            if self.__is_valid(values=update):
-                middle_sum += int(update[len(update) // 2])
-
-        return middle_sum
+        return self.__valid_sum
 
     def solve_puzzle_2(self) -> int:
         """Solves the second part of the Puzzle.
@@ -68,24 +97,22 @@ class AOC2024D05:
         Returns:
             int: TODO
         """
-        middle_sum = 0
-
-        for update in self.__updates:
-            if not self.__is_valid(values=update):
-                for permutation in list(itertools.permutations(update)):
-                    if self.__is_valid(values=list(permutation)):
-                        middle_sum += int(permutation[len(permutation) // 2])
-
-        return middle_sum
+        return self.__invalid_sum
 
     def solve_and_display_puzzles(self) -> None:
         """Solves both Puzzles and Display the Solution."""
         print(
-            colored('TODO', 'green'),
+            colored(
+                'Sum of middle numbers in correctly ordered updates:', 'green'
+            ),
             self.solve_puzzle_1(),
         )
 
         print(
-            colored('TODO', 'green'),
+            colored(
+                'Sum of middle numbers in initially incorrectly ordered'
+                'updates:',
+                'green',
+            ),
             self.solve_puzzle_2(),
         )
