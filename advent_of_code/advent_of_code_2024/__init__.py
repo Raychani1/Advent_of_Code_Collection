@@ -8,6 +8,7 @@ from advent_of_code.advent_of_code_2024.day_07.aoc_2024_07 import AOC2024D07
 from advent_of_code.advent_of_code_2024.day_08.aoc_2024_08 import AOC2024D08
 from advent_of_code.advent_of_code_2024.day_09.aoc_2024_09 import AOC2024D09
 from advent_of_code.advent_of_code_2024.day_10.aoc_2024_10 import AOC2024D10
+from advent_of_code.advent_of_code_2024.day_11.aoc_2024_11 import AOC2024D11
 
 __all__ = [
     'AOC2024D01',
@@ -20,4 +21,5 @@ __all__ = [
     'AOC2024D08',
     'AOC2024D09',
     'AOC2024D10',
+    'AOC2024D11',
 ]
